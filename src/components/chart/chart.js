@@ -4,10 +4,10 @@ import './chart.scss';
 
 function Chart(props) {
   const data = {
-    labels: ['1', '2', '3', '4', '5', '6'],
+    labels: props.date,
     datasets: [
       {
-        label: '# of Votes',
+        label: '# of' + " " + props.message,
         data: props.data,
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
