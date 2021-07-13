@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import './chart.scss';
 
 function Chart(props) {
   const data = {
@@ -29,7 +30,7 @@ function Chart(props) {
 
   return (
     <>
-      <div className='header'>
+      <div className='chart-header'>
         <h1 className='title'>{props.message}</h1>
       </div>
       <Line data={data} options={options} />

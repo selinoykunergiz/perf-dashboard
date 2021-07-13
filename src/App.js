@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Chart from './components/Chart';
-import Heading from './components/Header';
-import { dataService } from './services/data.service';
-import Calendar from './components/Calendar';
-import './App.css';
-
+import React, { useState, useEffect } from "react";
+import Chart from "./components/chart/chart";
+import Heading from "./components/header/header";
+import { dataService } from "./services/data.service";
+import Calendar from "./components/calendar/calendar";
+import "./App.scss";
 
 function App() {
- 
   const [ttfb, setTtfb] = React.useState([]);
   const [fcp, setFcp] = React.useState([]);
   const [domLoad, setDomLoad] = React.useState([]);
@@ -18,41 +16,49 @@ function App() {
   React.useEffect(() => {
     async function fetchChart() {
       const fullResponse = await dataService.getByMin(30);
-      const ttfb = fullResponse.map(x => x.ttfb);
+      const ttfb = fullResponse.map((x) => x.ttfb);
       setTtfb(ttfb);
-      const fcp = fullResponse.map(x => x.fcp);
+      const fcp = fullResponse.map((x) => x.fcp);
       setFcp(fcp);
-      const domLoad = fullResponse.map(x => x.domLoad);
+      const domLoad = fullResponse.map((x) => x.domLoad);
       setDomLoad(domLoad);
-      const windowLoad = fullResponse.map(x => x.windowLoad);
+      const windowLoad = fullResponse.map((x) => x.windowLoad);
       setWindowLoad(windowLoad);
     }
 
     fetchChart();
   }, []);
 
-  
-  async function onSubmit(startDate,endDate) {
-   const dateData = await dataService.getByDate(startDate,endDate);
-   const ttfb = dateData.map(x => x.ttfb);
-      setTtfb(ttfb);
-      const fcp = dateData.map(x => x.fcp);
-      setFcp(fcp);
-      const domLoad = dateData.map(x => x.domLoad);
-      setDomLoad(domLoad);
-      const windowLoad = dateData.map(x => x.windowLoad);
-      setWindowLoad(windowLoad);
+  async function onSubmit(startDate, endDate) {
+    const dateData = await dataService.getByDate(startDate, endDate);
+    const ttfb = dateData.map((x) => x.ttfb);
+    setTtfb(ttfb);
+    const fcp = dateData.map((x) => x.fcp);
+    setFcp(fcp);
+    const domLoad = dateData.map((x) => x.domLoad);
+    setDomLoad(domLoad);
+    const windowLoad = dateData.map((x) => x.windowLoad);
+    setWindowLoad(windowLoad);
   }
 
-
   return (
-    <div className="App">
+    <div className="app">
       <Heading />
       <Calendar onSubmit={onSubmit} />
-      <Chart message="ttfb" data={ttfb} />
-      <Chart message="fcp" data={fcp} />
-      <Chart message="domLoad" data={domLoad} />
-      <Chart message="windowLoad" data={windowLoad} />
+      <div className="app-chart">
+        <div>
+          <Chart message="ttfb" data={ttfb} />
+        </div>
+        <div>
+          <Chart message="fcp" data={fcp} />
+        </div>
+        <div>
+          <Chart message="domLoad" data={domLoad} />
+        </div>
+        <div>
+          <Chart message="windowLoad" data={windowLoad} />
+        </div>
+      </div>
     </div>
   );
 }

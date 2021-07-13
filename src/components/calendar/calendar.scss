@@ -1,0 +1,51 @@
+@import '../../assets/variables.scss';
+
+.calendar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    
+    .react-datepicker-wrapper {
+        margin-right: 10px;
+        input {
+            border-radius: 5px;
+            padding: 7px 20px;
+            box-shadow: 5px 5px 10px 3px #DEDEDE;
+            border-color: white !important;
+            border: none;
+            outline: none;
+        }
+    }
+    button {
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        background-color: #2B4254;
+        color: white;
+        border-radius: 4px;
+        padding: 5px 10px;
+        &:hover {
+            background-color: #FF6384;
+            color: white;
+            transition: .3s;
+        }
+    }
+}
+
+@media #{$edu-xs} {
+    .calendar {
+        flex-direction: column;
+        margin-bottom: 25px;
+        .react-datepicker-wrapper {
+            margin: 0 0 10px 0 !important;
+            width: 100%;
+            input {
+                width: 96% !important;
+                padding: 2% !important;
+            }
+        }
+    }
+}
+

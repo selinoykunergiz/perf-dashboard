@@ -1,0 +1,44 @@
+@import "./assets/variables.scss";
+
+.app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+
+  .app-chart {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+
+    > div {
+      width: 40%;
+    }
+
+    .chart-header {
+      .title {
+        font-size: 25px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media #{$edu-xs} {
+  .app {
+    width: 96%;
+    padding: 0 2%;
+    .app-chart {
+      > div {
+        width: 100%;
+      }
+      .chart-header {
+        .title {
+          font-size: 20px;
+        }
+      }
+    }  
+  }
+}

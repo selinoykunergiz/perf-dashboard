@@ -1,0 +1,13 @@
+@import '../../assets/variables.scss';
+
+.header{
+    font-weight: 500;
+    color: #2B4254;
+    font-size: 35px;
+}
+
+@media #{$edu-xs} {
+    .header{
+        font-size: 25px;
+    }
+}
