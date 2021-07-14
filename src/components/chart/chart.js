@@ -7,7 +7,7 @@ function Chart(props) {
     labels: props.date,
     datasets: [
       {
-        label: '# of' + " " + props.message,
+        label: '# of ' + props.message,
         data: props.data,
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
@@ -31,7 +31,7 @@ function Chart(props) {
   return (
     <>
       <div className='chart-header'>
-        <h1 className='title'>{props.message}</h1>
+        <h2 className='title'>{props.message}</h2>
       </div>
       <Line data={data} options={options} />
     </>
